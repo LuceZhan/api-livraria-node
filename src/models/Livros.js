@@ -3,13 +3,8 @@ import mongoose from "mongoose";
 const livroSchema = new mongoose.Schema({
     id: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
     },
     titulo: {
-        type: String,
-        required: true,
-    },
-    autor: {
         type: String,
         required: true,
     },
@@ -25,6 +20,12 @@ const livroSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    autor: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Autor",
+        required: true,
+    },
+
 }, {versionKey: false});
 
 
