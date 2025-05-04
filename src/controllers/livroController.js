@@ -66,5 +66,16 @@ class LivroController {
         }
     };
 
+ static async listarLivrosPorEditora(req, res) {
+       const editora = req.query.editora;
+        try {
+            // Busca os livros pela editora e popula o campo "autor"
+            const livrosPorEditora = await livro.find({ editora }).populate("autor");
+            res.status(200).json(livrosPorEditora);
+        } catch (error) {
+            res.status(500).json({ message: "Erro ao listar livros por editora", error });
+        }
+    }
+
 }
 export default LivroController;
